@@ -1,1 +1,1 @@
-# mmcc
+# Modular Materials Config Creator
