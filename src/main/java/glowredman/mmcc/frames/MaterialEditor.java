@@ -38,6 +38,7 @@ public class MaterialEditor extends Editor<MM_Material> {
 	private LabeledTextField resistance;
 	private LabeledTextField speedFactor;
 	private LabeledTextField texture;
+	private LabeledTextField noteblockInstrument;
 	private LabeledComboBox<ChemicalState> state;
 	private JButton color;
 	private JTextArea tagNames;
@@ -62,7 +63,6 @@ public class MaterialEditor extends Editor<MM_Material> {
 	private LabeledTextField bHardness;
 	private LabeledTextField bFriction;
 	private LabeledTextField bMapColor;
-	private LabeledTextField bMaterial;
 	private LabeledTextField bSound;
 	private JCheckBox bRequiresTool;
 	private JCheckBox bSticky;
@@ -143,33 +143,37 @@ public class MaterialEditor extends Editor<MM_Material> {
 		cst.gridy = 10;
 		this.add(texture, cst);
 		
-		state = new LabeledComboBox<>("State", ChemicalState.values());
+		noteblockInstrument = new LabeledTextField("Noteblock Instrument");
 		cst.gridy = 11;
+		this.add(noteblockInstrument, cst);
+		
+		state = new LabeledComboBox<>("State", ChemicalState.values());
+		cst.gridy = 12;
 		this.add(state, cst);
 		
 		color = new JButton("Color");
 		color.addActionListener(this::color);
 		cst.anchor = GridBagConstraints.CENTER;
-		cst.gridy = 12;
+		cst.gridy = 13;
 		this.add(color, cst);
 		
 		tagNames = new JTextArea();
 		JScrollPane tagNamesPanel = new JScrollPane(tagNames);
 		tagNamesPanel.setBorder(BorderFactory.createTitledBorder("Tag Names"));
-		tagNamesPanel.setMinimumSize(new Dimension(250, 100));
-		tagNamesPanel.setPreferredSize(new Dimension(250, 100));
-		tagNamesPanel.setMaximumSize(new Dimension(250, 100));
+		tagNamesPanel.setMinimumSize(new Dimension(250, 74));
+		tagNamesPanel.setPreferredSize(new Dimension(250, 74));
+		tagNamesPanel.setMaximumSize(new Dimension(250, 74));
 		cst.anchor = GridBagConstraints.NORTHWEST;
-		cst.gridy = 13;
+		cst.gridy = 14;
 		this.add(tagNamesPanel, cst);
 		
 		enabledTypes = new JTextArea();
 		JScrollPane enabledTypesPanel = new JScrollPane(enabledTypes);
 		enabledTypesPanel.setBorder(BorderFactory.createTitledBorder("Enabled Types"));
-		enabledTypesPanel.setMinimumSize(new Dimension(250, 300));
-		enabledTypesPanel.setPreferredSize(new Dimension(250, 300));
-		enabledTypesPanel.setMaximumSize(new Dimension(250, 300));
-		cst.gridy = 14;
+		enabledTypesPanel.setMinimumSize(new Dimension(250, 302));
+		enabledTypesPanel.setPreferredSize(new Dimension(250, 302));
+		enabledTypesPanel.setMaximumSize(new Dimension(250, 302));
+		cst.gridy = 15;
 		this.add(enabledTypesPanel, cst);
 		
 		//Second column
@@ -229,7 +233,7 @@ public class MaterialEditor extends Editor<MM_Material> {
 		
 		cst.gridx = 1;
 		cst.gridy = 0;
-		cst.gridheight = 14;
+		cst.gridheight = 15;
 		this.add(oreProps, cst);
 		
 		JPanel ttProps = new JPanel();
@@ -257,14 +261,14 @@ public class MaterialEditor extends Editor<MM_Material> {
 		tText = new JTextArea();
 		JScrollPane textPane = new JScrollPane(tText);
 		textPane.setBorder(BorderFactory.createTitledBorder("Text"));
-		textPane.setMinimumSize(new Dimension(250, 209));
-		textPane.setPreferredSize(new Dimension(250, 209));
-		textPane.setMaximumSize(new Dimension(250, 209));
+		textPane.setMinimumSize(new Dimension(250, 211));
+		textPane.setPreferredSize(new Dimension(250, 211));
+		textPane.setMaximumSize(new Dimension(250, 211));
 		tCst.gridy = 3;
 		ttProps.add(textPane, tCst);
 		
 		cst.gridx = 1;
-		cst.gridy = 14;
+		cst.gridy = 15;
 		cst.gridheight = 1;
 		this.add(ttProps, cst);
 		
@@ -288,32 +292,28 @@ public class MaterialEditor extends Editor<MM_Material> {
 		bCst.gridy = 2;
 		bProps.add(bMapColor, bCst);
 		
-		bMaterial = new LabeledTextField("Material");
-		bCst.gridy = 3;
-		bProps.add(bMaterial, bCst);
-		
 		bSound = new LabeledTextField("Sound Type");
-		bCst.gridy = 4;
+		bCst.gridy = 3;
 		bProps.add(bSound, bCst);
 		
 		bRequiresTool = new JCheckBox("Requires Tool For Drops");
-		bCst.gridy = 5;
+		bCst.gridy = 4;
 		bProps.add(bRequiresTool, bCst);
 		
 		bSticky = new JCheckBox("Sticky");
-		bCst.gridy = 6;
+		bCst.gridy = 5;
 		bProps.add(bSticky, bCst);
 		
 		bTags = new TagsPanel();
-		bTags.setMinimumSize(new Dimension(250, 170));
-		bTags.setPreferredSize(new Dimension(250, 170));
-		bTags.setMaximumSize(new Dimension(250, 170));
-		bCst.gridy = 7;
+		bTags.setMinimumSize(new Dimension(250, 198));
+		bTags.setPreferredSize(new Dimension(250, 198));
+		bTags.setMaximumSize(new Dimension(250, 198));
+		bCst.gridy = 6;
 		bProps.add(bTags, bCst);
 		
 		cst.gridx = 2;
 		cst.gridy = 0;
-		cst.gridheight = 13;
+		cst.gridheight = 14;
 		this.add(bProps, cst);
 
 		JPanel iProps = new JPanel();
@@ -348,7 +348,7 @@ public class MaterialEditor extends Editor<MM_Material> {
 		
 		cst.gridx = 2;
 		cst.gridy = 13;
-		cst.gridheight = 2;
+		cst.gridheight = 3;
 		this.add(iProps, cst);
 		
 		//Fourth column
@@ -462,7 +462,7 @@ public class MaterialEditor extends Editor<MM_Material> {
 		
 		cst.gridx = 3;
 		cst.gridy = 0;
-		cst.gridheight = 15;
+		cst.gridheight = 16;
 		this.add(panel4, cst);
 		
 		this.pack();
@@ -525,7 +525,6 @@ public class MaterialEditor extends Editor<MM_Material> {
 		bFriction.setText(o.block.friction);
 		bHardness.setText(o.block.hardness);
 		bMapColor.setText(o.block.mapColor);
-		bMaterial.setText(o.block.material);
 		bRequiresTool.setSelected(o.block.requiresToolForDrops);
 		bSound.setText(o.block.sound);
 		bSticky.setSelected(o.block.sticky);
@@ -559,6 +558,7 @@ public class MaterialEditor extends Editor<MM_Material> {
 		lPropagatesSkylightDown.setSelected(o.fluid.liquid.propagatesSkylightDown);
 		lViscosity.setText(o.fluid.liquid.viscosity);
 		name.setText(o.name);
+		noteblockInstrument.setText(o.noteblockInstrument);
 		oFriction.setText(o.ore.friction);
 		oHardness.setText(o.ore.hardness);
 		oJumpFactor.setText(o.ore.jumpFactor);
@@ -584,7 +584,6 @@ public class MaterialEditor extends Editor<MM_Material> {
 		object.block.friction = bFriction.getTextF(object.block.friction);
 		object.block.hardness = bHardness.getTextF(object.block.hardness);
 		object.block.mapColor = bMapColor.getText();
-		object.block.material = bMaterial.getText();
 		object.block.requiresToolForDrops = bRequiresTool.isSelected();
 		object.block.sound = bSound.getText();
 		object.block.sticky = bSticky.isSelected();
@@ -617,6 +616,7 @@ public class MaterialEditor extends Editor<MM_Material> {
 		object.jumpFactor = jumpFactor.getTextF(object.jumpFactor);
 		object.lightLevel = lightLevel.getTextI(object.lightLevel);
 		object.name = name.getText();
+		object.noteblockInstrument = noteblockInstrument.getText();
 		object.ore.friction = oFriction.getTextF(object.ore.friction);
 		object.ore.hardness = oHardness.getTextF(object.ore.hardness);
 		object.ore.jumpFactor = oJumpFactor.getTextF(object.ore.jumpFactor);
